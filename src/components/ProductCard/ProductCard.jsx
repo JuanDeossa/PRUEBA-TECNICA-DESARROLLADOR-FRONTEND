@@ -11,7 +11,7 @@ export const ProductCard = (props) => {
     description = "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
   } = props;
   return (
-    <Card sx={{ maxWidth: 345,height:380 }}>
+    <Card sx={{ maxWidth: 345,minHeight:400 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -19,7 +19,7 @@ export const ProductCard = (props) => {
           image={imageUrl}
           alt={title}
         />
-        <CardContent>
+        <CardContent sx={{minHeight:160}}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>

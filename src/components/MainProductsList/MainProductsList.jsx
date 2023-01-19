@@ -31,7 +31,7 @@ export const MainProductsList = () => {
   return (
     <Box>
       <Box sx={{ flexGrow: 1, margin: "40px 100px" }}>
-        <Grid container spacing={1}>
+        <Grid margin="0 auto" width="90%" container spacing={1}>
           {products.map((product, index) => (
             <Grid key={index} item xs={4}>
               <ProductCard
