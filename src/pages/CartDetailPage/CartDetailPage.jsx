@@ -1,10 +1,11 @@
+import { CartList } from "../../components/CartList/CartList";
 import { Header } from "../../components/Header/Header";
 
 export const CartDetailPage = () => {
   return (
     <div>
       <Header />
-      <h1>CartDetailPage</h1>
+      <CartList />
     </div>
   );
 };
