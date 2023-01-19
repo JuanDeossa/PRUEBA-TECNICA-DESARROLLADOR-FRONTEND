@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
+import "./Header.css"
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import RestoreIcon from "@mui/icons-material/Restore";
@@ -10,42 +11,30 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { ButtonTypeA } from "../ButtonTypeA/ButtonTypeA";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { minHeight } from "@mui/system";
 
 export const Header = () => {
-  const [value, setValue] = useState(0);
-  const navigate = useNavigate();
 
   return (
-    // <Box sx={{ width: 500 }}>
-    //   <BottomNavigation
-    //     showLabels
-    //     value={value}
-    //     onChange={(event, newValue) => {
-    //       setValue(newValue);
-    //     }}
-    //   >
-    //     <BottomNavigationAction
-    //       label="Ver Carrito"
-    //       icon={<ShoppingCartIcon />}
-    //       onClick={() => navigate("/cart-detail")}
-    //     />
-    //     <BottomNavigationAction
-    //       label="Agregar Producto"
-    //       icon={<AddBoxIcon />}
-    //       onClick={() => navigate("/add-product")}
-    //     />
-    //     <BottomNavigationAction
-    //       label="Crear Producto Perzonalizado"
-    //       icon={<BorderColorIcon />}
-    //       onClick={() => navigate("/custom-product")}
-    //     />
-    //   </BottomNavigation>
-    // </Box>
-    <Box>
-      {/* <ButtonTypeA text='Carrito'/>
-      <ButtonTypeA/>
-      <ButtonTypeA/> */}
-    </Box>
+    <Stack width={"100%"} height={108}>
+      <Box width={"100%"} height={72} sx={{ backgroundColor: "#042940" }}>
+        <span className="logo1"></span>
+      </Box>
+      <Stack
+        width={"100%"}
+        height={36}
+        direction="row"
+        justifyContent="flex-end"
+        alignItems="center"
+        sx={{ backgroundColor: "#DBF227", paddingRight: "20px" }}
+      >
+        <Typography variant="subtitle1" fontFamily={"Poppins,sans-serif"}>
+          Medellín,Colombia
+        </Typography>
+      </Stack>
+    </Stack>
   );
 };
 
