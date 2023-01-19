@@ -1,4 +1,5 @@
 import "./CartList.css";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,13 +10,12 @@ import Paper from "@mui/material/Paper";
 import { RiDeleteBin6Line, RiEyeLine } from "react-icons/ri";
 import { useContext } from "react";
 import { color } from "@mui/system";
-// import { useLocalStorage } from "../../hooks/useLocalStorage";
 // import { ModalContext } from "../../context/ModalContext";
 
 export const CartList = () => {
   const emptyTable = Array(3).fill(null);
+  const [productsList, setProductsList] = useLocalStorage("productsList", []);
   // const { setOpenModal, setData } = useContext(ModalContext);
-  // const [studentsDB, setStudentsDB] = useLocalStorage("studentsDB", []);
 
   // const deleteRow = (name) => {
   //   const newStudentsArray = studentsDB.filter(
@@ -37,12 +37,15 @@ export const CartList = () => {
   //   });
   // };
 
-  const studentsDB = [
-    {name:"JR",score:100,aproved:true},
-    {name:"JR",score:100,aproved:true},
-    {name:"JR",score:100,aproved:true},
-    {name:"JR",score:100,aproved:true}
-  ];
+  // window.localStorage.setItem(
+  //   "productsList",
+  //   JSON.stringify([
+  //     { ID: 1, name: "zapato", description: "Lorem ipsum dolor im ..." },
+  //     { ID: 12, name: "reloj", description: "Lorem ipsum dolor im ..." },
+  //     { ID: 13, name: "celular", description: null },
+  //     { ID: 21, name: "Mouse", description: "Lorem ipsum dolor im ..." },
+  //   ])
+  // );
 
   const cellStyles = {
     label: {
@@ -69,7 +72,7 @@ export const CartList = () => {
     },
   };
 
-  const labels = ["ID", "Nombre", "Decripción","Detalles"];
+  const labels = ["ID", "Nombre", "Decripción", "Ver más"];
   return (
     <div className="cart-list">
       <TableContainer
@@ -85,7 +88,7 @@ export const CartList = () => {
             <TableRow>
               {labels.map((label, i) => (
                 <TableCell
-                  align={label === "Name" ? "left" : "center"}
+                  align={label === "ID" ? "left" : "center"}
                   key={i}
                   sx={cellStyles.label}
                 >
@@ -95,36 +98,28 @@ export const CartList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {!studentsDB.length
+            {!productsList.length
               ? null
-              : studentsDB.map((row, i) => (
+              : productsList.map((row, i) => (
                   <TableRow key={i}>
-                    <TableCell sx={cellStyles.value}>{row?.name}</TableCell>
+                    <TableCell sx={cellStyles.value}>{row?.ID}</TableCell>
                     <TableCell align="center" sx={cellStyles.value}>
-                      {row?.score}
+                      {row?.name}
                     </TableCell>
                     <TableCell
                       className={`table-data state ${
-                        row?.aproved ? "yes" : "no"
+                        row?.description ? "yes" : "no"
                       }`}
                       align="center"
                       sx={cellStyles.value}
                     >
-                      {row?.aproved ? "Yes" : "No"}
+                      {row?.description ?? "Not available"}
                     </TableCell>
                     <TableCell
                       align="center"
                       sx={cellStyles.value}
-                      id={row.name}
-                      onClick={() => deleteRow(row.name)}
-                    >
-                      <RiDeleteBin6Line className="delete-icon" />
-                    </TableCell>
-                    <TableCell
-                      align="center"
-                      sx={cellStyles.value}
-                      id={row.name}
-                      onClick={() => showRowDetails(row.name)}
+                      id={row.ID}
+                      onClick={() => showRowDetails(row.ID)}
                     >
                       <RiEyeLine className="details-icon" />
                     </TableCell>
@@ -144,7 +139,6 @@ export const CartList = () => {
                   align="center"
                   sx={cellStyles.value}
                 ></TableCell>
-                <TableCell align="center" sx={cellStyles.value}></TableCell>
                 <TableCell align="center" sx={cellStyles.value}></TableCell>
               </TableRow>
             ))}
