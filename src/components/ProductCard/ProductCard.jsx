@@ -3,14 +3,21 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useContext } from "react";
+import { ModalContext } from "../../context/ModalContext";
 
 export const ProductCard = (props) => {
   const {
+    id,
     imageUrl = "",
     title = "Product name not available",
     description = "Description not available",
     price = "$---",
   } = props;
+
+  const { openAddProductModal, setOpenAddProductModal, data, setData } =
+    useContext(ModalContext);
+
   return (
     <Card sx={{ maxWidth: 345, minHeight: 400 }}>
       <CardActionArea>
@@ -40,6 +47,10 @@ export const ProductCard = (props) => {
             fontFamily: "poppins,sans-serif",
             backgroundColor: "#DBF227",
             ":hover": { backgroundColor: "#b3c91e" },
+          }}
+          onClick={() => {
+            setData({ id, title, description, price });
+            setOpenAddProductModal(true);
           }}
         >
           Añadir al carrito

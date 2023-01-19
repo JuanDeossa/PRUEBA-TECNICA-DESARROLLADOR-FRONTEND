@@ -3,15 +3,22 @@ import Box from "@mui/material/Box";
 import "./HomePage.css";
 import { MainProductsList } from "../../components/MainProductsList/MainProductsList";
 import Typography from "@mui/material/Typography";
+import { AddProductModal } from "../../components/Modals/AddProductModal/AddProdctModal";
 
 export const HomePage = () => {
   return (
     <Box sx={{ minHeight: "100vh" }}>
       <Header />
-      <Typography textAlign="center" variant="h4" fontFamily={"Poppins,sans-serif"} marginTop={5}>
+      <Typography
+        textAlign="center"
+        variant="h4"
+        fontFamily={"Poppins,sans-serif"}
+        marginTop={5}
+      >
         Developed By Juan Ricardo Deossa
       </Typography>
       <MainProductsList />
+      <AddProductModal />
     </Box>
   );
 };
