@@ -23,7 +23,7 @@ const navItemStyles = {
 
 export const Header = () => {
   const navigate = useNavigate();
-  const navigateTo = (route="*") => navigate((route));
+  const navigateTo = (route = "*") => navigate(route);
   return (
     <Stack width={"100%"} height={108}>
       <Stack
@@ -37,10 +37,7 @@ export const Header = () => {
       >
         <span className="logo1"></span>
         <Stack color="#ffff" direction="row" paddingRight="71px" spacing={4}>
-          <Typography
-            onClick={() => navigateTo("/")}
-            sx={navItemStyles}
-          >
+          <Typography onClick={() => navigateTo("/")} sx={navItemStyles}>
             Home
           </Typography>
           <Typography
@@ -49,12 +46,12 @@ export const Header = () => {
           >
             Carrito
           </Typography>
-          <Typography
+          {/* <Typography
             onClick={() => navigateTo("/add-product")}
             sx={navItemStyles}
           >
             Seleccionar producto
-          </Typography>
+          </Typography> */}
           <Typography
             onClick={() => navigateTo("/custom-product")}
             sx={navItemStyles}

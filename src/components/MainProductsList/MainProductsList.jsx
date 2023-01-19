@@ -38,6 +38,7 @@ export const MainProductsList = () => {
                 title={product?.title}
                 description={product?.description}
                 imageUrl={product?.images[0]}
+                price={product?.price}
               />
             </Grid>
           ))}

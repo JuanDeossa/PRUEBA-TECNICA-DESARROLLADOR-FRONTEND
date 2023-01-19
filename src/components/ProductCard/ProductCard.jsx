@@ -6,30 +6,42 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 
 export const ProductCard = (props) => {
   const {
-    imageUrl = "https://mui.com/static/images/cards/contemplative-reptile.jpg",
-    title = "Lizard",
-    description = "Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica",
+    imageUrl = "",
+    title = "Product name not available",
+    description = "Description not available",
+    price = "$---",
   } = props;
   return (
-    <Card sx={{ maxWidth: 345,minHeight:400 }}>
+    <Card sx={{ maxWidth: 345, minHeight: 400 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="160"
-          image={imageUrl}
-          alt={title}
-        />
-        <CardContent sx={{minHeight:160}}>
+        <CardMedia component="img" height="160" image={imageUrl} alt={title} />
+        <CardContent sx={{ minHeight: 160 }}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {description}
           </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ marginTop: "10px", fontWeight: "900" }}
+          >
+            {`$ ${price}`}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          sx={{
+            color: "#042940",
+            fontWeight: "900",
+            fontFamily: "poppins,sans-serif",
+            backgroundColor: "#DBF227",
+            ":hover": { backgroundColor: "#b3c91e" },
+          }}
+        >
           Añadir al carrito
         </Button>
       </CardActions>
