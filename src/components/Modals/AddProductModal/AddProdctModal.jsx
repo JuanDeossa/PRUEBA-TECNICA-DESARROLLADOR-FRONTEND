@@ -6,6 +6,7 @@ import { ModalContext } from "../../../context/ModalContext";
 import { ButtonTypeA } from "../../ButtonTypeA/ButtonTypeA";
 import { Stack } from "@mui/system";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import CardMedia from "@mui/material/CardMedia";
 
 const style = {
   position: "absolute",
@@ -101,7 +102,13 @@ export const AddProductModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography variant="h6">{data?.id}</Typography>
+          <CardMedia
+            component="img"
+            height="160"
+            image={data?.imageUrl}
+            alt={data?.title}
+          />
+          {/* <Typography variant="h6">{data?.id}</Typography> */}
           <Typography variant="h6">{data?.title}</Typography>
           <Typography variant="subtitle2">{data?.description}</Typography>
           <Typography variant="h6">{`$ ${data?.price}`}</Typography>

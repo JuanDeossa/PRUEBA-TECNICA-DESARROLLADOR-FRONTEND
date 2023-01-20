@@ -7,12 +7,19 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import { RiEyeLine } from "react-icons/ri";
+import { Box } from "@mui/system";
+import { getTotalValue } from "../../services/getTotalValue";
+import { Typography } from "@mui/material";
 
 export const CartList = () => {
-  const emptyTable = Array(3).fill(null);
+  useEffect(() => {
+    setTotalValue(getTotalValue(productsList));
+  });
+
+  const emptyTable = Array(0).fill(null);
   const [productsList, setProductsList] = useLocalStorage("productsList", []);
 
   const cellStyles = {
@@ -42,7 +49,8 @@ export const CartList = () => {
 
   const labels = ["ID", "Nombre", "Decripción", "Ver más"];
 
-  const { setOpenProductDetailModal, setData } = useContext(ModalContext);
+  const { setOpenProductDetailModal, setData, totalValue, setTotalValue } =
+    useContext(ModalContext);
 
   const showRowDetails = (id) => {
     setOpenProductDetailModal(true);
@@ -122,6 +130,14 @@ export const CartList = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Box padding="10px" textAlign="end">
+        <Typography>{`Subtotál: $ ${totalValue}`}</Typography>
+        <Typography>{`Iva: $ ${(totalValue * 0.19).toFixed(2)}`}</Typography>
+        <Typography
+          sx={{ textDecoration: "underline" }}
+          variant="h6"
+        >{`Totál: $ ${(totalValue * 1.19).toFixed(2)}`}</Typography>
+      </Box>
     </div>
   );
 };
