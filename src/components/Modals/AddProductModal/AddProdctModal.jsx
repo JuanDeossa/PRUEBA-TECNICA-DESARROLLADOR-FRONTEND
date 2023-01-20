@@ -67,6 +67,7 @@ export const AddProductModal = () => {
         {
           ID: data?.id,
           title: data?.title,
+          image: data?.imageUrl,
           description: data?.description,
           price: data?.price,
           units: cantidad,

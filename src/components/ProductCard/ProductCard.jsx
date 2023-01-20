@@ -49,7 +49,7 @@ export const ProductCard = (props) => {
             ":hover": { backgroundColor: "#b3c91e" },
           }}
           onClick={() => {
-            setData({ id, title, description, price });
+            setData({ id, title, description, price, imageUrl });
             setOpenAddProductModal(true);
           }}
         >

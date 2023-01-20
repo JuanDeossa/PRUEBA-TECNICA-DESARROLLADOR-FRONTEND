@@ -6,6 +6,7 @@ import { ModalContext } from "../../../context/ModalContext";
 import { ButtonTypeA } from "../../ButtonTypeA/ButtonTypeA";
 import { Stack } from "@mui/system";
 import { ProductDetailChildModal } from "./ProductDetailChildModal";
+import CardMedia from "@mui/material/CardMedia";
 
 const buttonStyles1 = {
   width: "30%",
@@ -49,6 +50,11 @@ export const ProductDetailModal = () => {
     data,
     setOpenProductDetailChildModal,
   } = useContext(ModalContext);
+
+  const subtotal = (data?.price * data?.units).toFixed(2);
+  const IVA = (data?.price * data?.units * 0.19).toFixed(2);
+  const total = (data?.price * data?.units * 1.19).toFixed(2);
+
   const handleClose = () => {
     setOpenProductDetailModal(false);
   };
@@ -62,21 +68,23 @@ export const ProductDetailModal = () => {
         aria-describedby="parent-modal-description"
       >
         <Box sx={{ ...style, width: 400 }}>
+          <CardMedia
+            component="img"
+            height="160"
+            image={data?.image}
+            alt={data?.title}
+          />
           <Typography variant="h6">{data?.title}</Typography>
           <Typography variant="subtitle1">{`ID:${data?.ID}`}</Typography>
           <Typography variant="subtitle2">{data?.description}</Typography>
           <Typography variant="h6">{`$ ${data?.price}`}</Typography>
           <Typography variant="subtitle1">{`Cantidad: ${data?.units}`}</Typography>
-          <Typography variant="subtitle1">{`Subtotál:$ ${
-            data?.price * data?.units
-          }`}</Typography>
-          <Typography variant="subtitle1">{`IVA:$ ${
-            data?.price * data?.units * 0.19
-          }`}</Typography>
+          <Typography variant="subtitle1">{`Subtotál:$ ${subtotal}`}</Typography>
+          <Typography variant="subtitle1">{`IVA:$ ${IVA}`}</Typography>
           <Typography
             sx={{ textDecoration: "underline" }}
             variant="h6"
-          >{`Totál:$ ${data?.price * data?.units * 1.19}`}</Typography>
+          >{`Totál:$ ${total}`}</Typography>
           <Stack
             direction="row"
             justifyContent="center"
