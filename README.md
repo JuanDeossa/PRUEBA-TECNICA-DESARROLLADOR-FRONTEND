@@ -35,4 +35,9 @@ Páginas:
  En esta página se puede crear mediante un formulario de react hook form, productos custom a los cuales se les asigna un ID unico automaticamente y estos productos se agregan automaticamente a la pgina de home para poder ser agregaos o eliminados del carrito.
     
   ![image](https://user-images.githubusercontent.com/110882230/213791009-0ca2f79b-c48d-4843-91e7-881237e7f131.png)
+  
+  # Notas
+  -La aplicacion cuenta con persistencia de datos mediante el uso del localStorage del navegador y asi poder conservar los datos del carrito de compras y productos custom.
+  
+  -Realizado por Juan Ricardo Deossa Morales en Medellin, Colombia (18-20 de enero de 2023)
 
