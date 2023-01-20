@@ -1,11 +1,31 @@
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 import { useContext, useState } from "react";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 import { ModalContext } from "../../../context/ModalContext";
 import { ButtonTypeA } from "../../ButtonTypeA/ButtonTypeA";
 import { Stack } from "@mui/system";
-// import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { ProductDetailChildModal } from "./ProductDetailChildModal";
+
+const buttonStyles1 = {
+  width: "30%",
+  color: "black",
+  height: "40px",
+  fontSize: "16px",
+  fontWeight: "900",
+  backgroundColor: "#DBF227",
+  ":hover": { backgroundColor: "#b3c91e" },
+};
+
+const buttonStyles2 = {
+  width: "20%",
+  color: "black",
+  height: "40px",
+  fontSize: "16px",
+  fontWeight: "900",
+  backgroundColor: "#F30A0A",
+  ":hover": { backgroundColor: "#D50606" },
+};
 
 const style = {
   position: "absolute",
@@ -16,44 +36,32 @@ const style = {
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
-};
-
-const buttonStyles = {
-  color: "black",
-  height: "30px",
-  padding: "0px",
-  fontSize: "36px",
-  fontWeight: "900",
-  backgroundColor: "#DBF227",
-  ":hover": { backgroundColor: "#b3c91e" },
-};
-
-const buttonStyles2 = {
-  width: "30%",
-  color: "black",
-  height: "40px",
-  fontSize: "16px",
-  fontWeight: "900",
-  backgroundColor: "#DBF227",
-  ":hover": { backgroundColor: "#b3c91e" },
+  pt: 2,
+  px: 4,
+  pb: 3,
 };
 
 export const ProductDetailModal = () => {
-  const { openProductDetailModal, setOpenProductDetailModal, data, setData } =
-    useContext(ModalContext);
-  const handleOpen = () => setOpenProductDetailModal(true);
-  const handleClose = () => setOpenProductDetailModal(false);
+  const [openChildModal, setOpenChildModal] = useState(false);
+  const {
+    openProductDetailModal,
+    setOpenProductDetailModal,
+    data,
+    setOpenProductDetailChildModal,
+  } = useContext(ModalContext);
+  const handleClose = () => {
+    setOpenProductDetailModal(false);
+  };
 
   return (
     <div>
       <Modal
         open={openProductDetailModal}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="parent-modal-title"
+        aria-describedby="parent-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={{ ...style, width: 400 }}>
           <Typography variant="h6">{data?.title}</Typography>
           <Typography variant="subtitle1">{`ID:${data?.ID}`}</Typography>
           <Typography variant="subtitle2">{data?.description}</Typography>
@@ -75,13 +83,18 @@ export const ProductDetailModal = () => {
             gap="15px"
             alignItems="center"
           ></Stack>
-          <Stack direction="row" justifyContent="center">
+          <Stack direction="row" justifyContent="center" gap="20px">
             <ButtonTypeA
               text="Eliminar"
-              action={() => console.log("Yes")}
-              styles={buttonStyles2}
+              action={() => setOpenProductDetailChildModal(true)}
+              styles={buttonStyles1}
             />
+            <ButtonTypeA text="X" action={handleClose} styles={buttonStyles2} />
           </Stack>
+          <ProductDetailChildModal
+            open={openChildModal}
+            setOpen={setOpenChildModal}
+          />
         </Box>
       </Modal>
     </div>

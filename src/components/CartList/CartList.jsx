@@ -7,10 +7,9 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { RiDeleteBin6Line, RiEyeLine } from "react-icons/ri";
 import { useContext } from "react";
-import { color } from "@mui/system";
 import { ModalContext } from "../../context/ModalContext";
+import { RiEyeLine } from "react-icons/ri";
 
 export const CartList = () => {
   const emptyTable = Array(3).fill(null);
@@ -43,8 +42,7 @@ export const CartList = () => {
 
   const labels = ["ID", "Nombre", "Decripción", "Ver más"];
 
-  const { openProductDetailModal, setOpenProductDetailModal, data, setData } =
-    useContext(ModalContext);
+  const { setOpenProductDetailModal, setData } = useContext(ModalContext);
 
   const showRowDetails = (id) => {
     setOpenProductDetailModal(true);
