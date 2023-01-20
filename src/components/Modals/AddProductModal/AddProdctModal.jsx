@@ -74,14 +74,21 @@ export const AddProductModal = () => {
         },
       ]);
     } else {
-      console.log("Si existe");
+      console.log(itemExists);
+      console.log(cantidad);
+      const newArray = productsList?.map((product) => {
+        if (product?.ID === id) {
+          return { ...product, units: product?.units + cantidad };
+        }
+      });
+      setProductsCart(newArray);
     }
   };
 
   const confirmOrder = (id) => {
     verifyLocalStorage(id);
     setOpenAddProductModal(false);
-    setData({})
+    setData({});
   };
 
   return (
