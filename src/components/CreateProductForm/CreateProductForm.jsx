@@ -1,10 +1,15 @@
+import "./CreateProductForm.css";
 import { Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React from "react";
 import { useForm } from "react-hook-form";
-import "./CreateProductForm.css";
+import { useLocalStorage } from "../../../src/hooks/useLocalStorage";
 
 export const CreateProductForm = () => {
+  const [customProducts, setCustomProducts] = useLocalStorage(
+    "customProductsList",
+    []
+  );
   const {
     register,
     handleSubmit,
@@ -15,8 +20,15 @@ export const CreateProductForm = () => {
       title: data["Nombre"],
       description: data["Descripción"],
       price: data["Precio"],
+      images: [
+        "https://via.placeholder.com/242x160.png/0000FF/808080%20C/?text=Custom-Product",
+        "",
+        "",
+      ],
+      custom: true,
     };
-    console.log(newItem);
+    const num = customProducts?.length;
+    setCustomProducts([...customProducts, { ...newItem, id: `C-${num + 2}` }]);
   };
   console.log(errors);
 
