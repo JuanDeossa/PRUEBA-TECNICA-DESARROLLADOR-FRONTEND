@@ -93,30 +93,32 @@ export const CartList = () => {
                     <TableCell
                       align="center"
                       sx={cellStyles.value}
-                      id={row.ID}
+                      id={row?.ID}
                       onClick={() => showRowDetails(row?.ID)}
                     >
                       <RiEyeLine className="details-icon" />
                     </TableCell>
                   </TableRow>
                 ))}
-            {emptyTable.map((e, i) => (
-              <TableRow key={i}>
-                <TableCell sx={cellStyles.value}></TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ ...cellStyles.value, color: "white" }}
-                >
-                  .
-                </TableCell>
-                <TableCell
-                  className={`table-data state`}
-                  align="center"
-                  sx={cellStyles.value}
-                ></TableCell>
-                <TableCell align="center" sx={cellStyles.value}></TableCell>
-              </TableRow>
-            ))}
+            {productsList?.length
+              ? null
+              : emptyTable.map((e, i) => (
+                  <TableRow key={i}>
+                    <TableCell sx={cellStyles.value}></TableCell>
+                    <TableCell
+                      align="center"
+                      sx={{ ...cellStyles.value, color: "white" }}
+                    >
+                      .
+                    </TableCell>
+                    <TableCell
+                      className={`table-data state`}
+                      align="center"
+                      sx={cellStyles.value}
+                    ></TableCell>
+                    <TableCell align="center" sx={cellStyles.value}></TableCell>
+                  </TableRow>
+                ))}
           </TableBody>
         </Table>
       </TableContainer>

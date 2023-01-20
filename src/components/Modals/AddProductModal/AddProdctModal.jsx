@@ -62,7 +62,6 @@ export const AddProductModal = () => {
     const productsList = JSON.parse(localStorage.getItem("productsList"));
     const itemExists = productsList?.find((item) => item?.ID === id);
     if (!itemExists) {
-      console.log("No existe");
       setProductsCart([
         ...productsCart,
         {
@@ -74,21 +73,22 @@ export const AddProductModal = () => {
         },
       ]);
     } else {
-      console.log(itemExists);
-      console.log(cantidad);
       const newArray = productsList?.map((product) => {
         if (product?.ID === id) {
           return { ...product, units: product?.units + cantidad };
+        } else {
+          return product;
         }
       });
       setProductsCart(newArray);
     }
+    setCantidad(1);
   };
 
   const confirmOrder = (id) => {
     verifyLocalStorage(id);
-    setOpenAddProductModal(false);
     setData({});
+    setOpenAddProductModal(false);
   };
 
   return (
