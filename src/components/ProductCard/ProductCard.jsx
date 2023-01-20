@@ -47,7 +47,7 @@ export const ProductCard = (props) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, minHeight: 400 }}>
+    <Card sx={{  }}>
       <CardActionArea>
         <CardMedia component="img" height="160" image={imageUrl} alt={title} />
         <CardContent sx={{ minHeight: 160 }}>

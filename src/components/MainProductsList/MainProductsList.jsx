@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { useLocalStorage } from "../../../src/hooks/useLocalStorage";
 
-
 export const MainProductsList = () => {
   const [customProducts, setCustomProducts] = useLocalStorage(
     "customProductsList",
@@ -25,10 +24,14 @@ export const MainProductsList = () => {
 
   return (
     <Box>
-      <Box sx={{ flexGrow: 1, margin: "40px 100px" }}>
-        <Grid margin="0 auto" width="90%" container spacing={1}>
+      <Box
+        maxWidth="1300px"
+        margin="0 auto"
+        sx={{ flexGrow: 1, marginX: { xs: "auto" } }}
+      >
+        <Grid paddingX="40px" paddingY="30px" container spacing={4}>
           {products.map((product, index) => (
-            <Grid key={index} item xs={4}>
+            <Grid key={index} item xs={12} sm={6} md={4}>
               <ProductCard
                 id={product?.id}
                 title={product?.title}

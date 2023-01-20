@@ -9,14 +9,14 @@ export const HomePage = () => {
   return (
     <Box sx={{ minHeight: "100vh" }}>
       <Header />
-      <Typography
+      {/* <Typography
         textAlign="center"
         variant="h4"
         fontFamily={"Poppins,sans-serif"}
         marginTop={5}
       >
         Developed By Juan Ricardo Deossa
-      </Typography>
+      </Typography> */}
       <MainProductsList />
       <AddProductModal />
     </Box>
