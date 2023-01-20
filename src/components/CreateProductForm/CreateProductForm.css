@@ -1,0 +1,11 @@
+.form-input {
+  height: 40px;
+  border-radius: 4px;
+}
+.submit-input {
+  margin: 15px auto !important;
+  width: 50%;
+  height: 40px;
+  background-color: #dbf227;
+  border-radius: 10px;
+}
