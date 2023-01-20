@@ -20,10 +20,19 @@ Páginas:
 -HomePage:
   En ella se muestra una grid con los productos traidos de la API (20 en total) y con los productos agregados por el usuarios manualmente en la pagina    llamada crear producto (por defecto no hay productos custom creados). Las acciones que se pueden realizar en esta pagina son agregar cierta cantidad de unidades de cualquier producto al carrito de compras y tambien eliminar los productos custom de la grid principal una vez hayan sido creados.
   
+  ![image](https://user-images.githubusercontent.com/110882230/213790711-40971e6c-9f1d-47a8-be1f-81e0b36ab60e.png)
+
+  
 -Carrito:
   en Esta pagina se puede ver de manera general y en detalle cada item agregado al carrito de compras, tambien se pueden eliminar todas las cantidades de un item y siempre se muestra el valor total del carrito en la parte inferior.
+  
+  ![image](https://user-images.githubusercontent.com/110882230/213790821-5e6b8b73-6d71-4ede-9cac-7310ce11a455.png)
+  
+  ![image](https://user-images.githubusercontent.com/110882230/213790896-031de091-5ddf-400f-a022-47b03907d640.png)
+
   
  -Crear producto:
  En esta página se puede crear mediante un formulario de react hook form, productos custom a los cuales se les asigna un ID unico automaticamente y estos productos se agregan automaticamente a la pgina de home para poder ser agregaos o eliminados del carrito.
     
-  
+  ![image](https://user-images.githubusercontent.com/110882230/213791009-0ca2f79b-c48d-4843-91e7-881237e7f131.png)
+
