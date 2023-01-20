@@ -25,18 +25,24 @@ export const Header = () => {
   const navigate = useNavigate();
   const navigateTo = (route = "*") => navigate(route);
   return (
-    <Stack width={"100%"} height={108}>
+    <Stack width={"100%"} minHeight={108}>
       <Stack
         width={"100%"}
-        height={72}
+        minHeight="72px"
         sx={{ backgroundColor: "#042940" }}
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        paddingLeft="71px"
+        paddingLeft={{ xs: "5px", sm: "71px" }}
+        paddingY={{xs:"20px",sm:"5px"}}
       >
         <span className="logo1"></span>
-        <Stack color="#ffff" direction="row" paddingRight="71px" spacing={4}>
+        <Stack
+          color="#ffff"
+          direction={{ xs: "column", sm: "row" }}
+          paddingRight={{ xs: "25px", sm: "71px" }}
+          spacing={{xs:"15px",sm:"50px"}}
+        >
           <Typography onClick={() => navigateTo("/")} sx={navItemStyles}>
             Home
           </Typography>
@@ -46,12 +52,6 @@ export const Header = () => {
           >
             Carrito
           </Typography>
-          {/* <Typography
-            onClick={() => navigateTo("/add-product")}
-            sx={navItemStyles}
-          >
-            Seleccionar producto
-          </Typography> */}
           <Typography
             onClick={() => navigateTo("/custom-product")}
             sx={navItemStyles}
@@ -76,9 +76,3 @@ export const Header = () => {
     </Stack>
   );
 };
-
-/*
-<Route path="/cart-detail" element={<CartDetailPage />} />
-<Route path="/custom-product" element={<CreateProductPage />} />
-<Route path="/add-product" element={<SelectProductPage />} />
-*/
