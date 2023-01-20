@@ -15,37 +15,6 @@ import { color } from "@mui/system";
 export const CartList = () => {
   const emptyTable = Array(3).fill(null);
   const [productsList, setProductsList] = useLocalStorage("productsList", []);
-  // const { setOpenModal, setData } = useContext(ModalContext);
-
-  // const deleteRow = (name) => {
-  //   const newStudentsArray = studentsDB.filter(
-  //     (student) => student.name !== name
-  //   );
-  //   setStudentsDB(newStudentsArray);
-  // };
-
-  // const showRowDetails = (name) => {
-  //   setOpenModal((prevState) => !prevState);
-  //   const { difficulty, category, questions } = studentsDB.find(
-  //     (student) => student.name === name
-  //   );
-  //   setData({
-  //     name,
-  //     difficulty,
-  //     category,
-  //     questionsNumber: questions?.length,
-  //   });
-  // };
-
-  // window.localStorage.setItem(
-  //   "productsList",
-  //   JSON.stringify([
-  //     { ID: 1, name: "zapato", description: "Lorem ipsum dolor im ..." },
-  //     { ID: 12, name: "reloj", description: "Lorem ipsum dolor im ..." },
-  //     { ID: 13, name: "celular", description: null },
-  //     { ID: 21, name: "Mouse", description: "Lorem ipsum dolor im ..." },
-  //   ])
-  // );
 
   const cellStyles = {
     label: {
@@ -88,7 +57,7 @@ export const CartList = () => {
             <TableRow>
               {labels.map((label, i) => (
                 <TableCell
-                  align={label === "ID" ? "left" : "center"}
+                  align={label !== "Ver más" ? "left" : "center"}
                   key={i}
                   sx={cellStyles.label}
                 >
@@ -103,14 +72,14 @@ export const CartList = () => {
               : productsList.map((row, i) => (
                   <TableRow key={i}>
                     <TableCell sx={cellStyles.value}>{row?.ID}</TableCell>
-                    <TableCell align="center" sx={cellStyles.value}>
-                      {row?.name}
+                    <TableCell align="left" sx={cellStyles.value}>
+                      {row?.title}
                     </TableCell>
                     <TableCell
-                      className={`table-data state ${
-                        row?.description ? "yes" : "no"
-                      }`}
-                      align="center"
+                      // className={`table-data state ${
+                      //   row?.description ? "yes" : "no"
+                      // }`}
+                      align="left"
                       sx={cellStyles.value}
                     >
                       {row?.description ?? "Not available"}

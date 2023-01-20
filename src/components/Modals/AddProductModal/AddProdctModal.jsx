@@ -1,11 +1,11 @@
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useContext, useState } from "react";
 import { ModalContext } from "../../../context/ModalContext";
 import { ButtonTypeA } from "../../ButtonTypeA/ButtonTypeA";
 import { Stack } from "@mui/system";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 const style = {
   position: "absolute",
@@ -28,6 +28,7 @@ const buttonStyles = {
   backgroundColor: "#DBF227",
   ":hover": { backgroundColor: "#b3c91e" },
 };
+
 const buttonStyles2 = {
   width: "30%",
   color: "black",
@@ -39,6 +40,7 @@ const buttonStyles2 = {
 };
 
 export const AddProductModal = () => {
+  const [productsCart, setProductsCart] = useLocalStorage("productsList", []);
   const [cantidad, setCantidad] = useState(1);
   const { openAddProductModal, setOpenAddProductModal, data, setData } =
     useContext(ModalContext);
@@ -56,6 +58,31 @@ export const AddProductModal = () => {
     }
   };
 
+  const verifyLocalStorage = (id) => {
+    const productsList = JSON.parse(localStorage.getItem("productsList"));
+    const itemExists = productsList?.find((item) => item?.ID === id);
+    if (!itemExists) {
+      console.log("No existe");
+      setProductsCart([
+        ...productsCart,
+        {
+          ID: data?.id,
+          title: data?.title,
+          description: data?.description,
+          price: data?.price,
+          units: cantidad,
+        },
+      ]);
+    } else {
+      console.log("Si existe");
+    }
+  };
+
+  const confirmOrder = (id) => {
+    verifyLocalStorage(id);
+    setOpenAddProductModal(false);
+  };
+
   return (
     <div>
       <Modal
@@ -65,6 +92,7 @@ export const AddProductModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <Typography variant="h6">{data?.id}</Typography>
           <Typography variant="h6">{data?.title}</Typography>
           <Typography variant="subtitle2">{data?.description}</Typography>
           <Typography variant="h6">{`$ ${data?.price}`}</Typography>
@@ -87,7 +115,11 @@ export const AddProductModal = () => {
             <ButtonTypeA text="+" action={addItem} styles={buttonStyles} />
           </Stack>
           <Stack direction="row" justifyContent="center">
-            <ButtonTypeA text="Aceptar" styles={buttonStyles2} />
+            <ButtonTypeA
+              text="Aceptar"
+              action={() => confirmOrder(data?.id)}
+              styles={buttonStyles2}
+            />
           </Stack>
         </Box>
       </Modal>
