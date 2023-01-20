@@ -20,6 +20,7 @@ const buttonStyles2 = {
 };
 
 export const ProductCard = (props) => {
+  const [productsList, setProductsList] = useLocalStorage("productsList", []);
   const [customProducts, setCustomProducts] = useLocalStorage(
     "customProductsList",
     []
@@ -37,10 +38,11 @@ export const ProductCard = (props) => {
   const { openAddProductModal, setOpenAddProductModal, setData } =
     useContext(ModalContext);
 
-  const handleDeleteCustom = (id) => {
-    console.log(id);
-    const newArray = customProducts?.filter((product) => product?.id !== id);
-    setCustomProducts(newArray);
+  const handleDeleteCustom = async (id) => {
+    const newArray1 = customProducts?.filter((product) => product?.id !== id);
+    const newArray2 = productsList?.filter((product) => product?.ID !== id);
+    await setCustomProducts(newArray1);
+    await setProductsList(newArray2);
     location.reload();
   };
 

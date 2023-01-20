@@ -29,6 +29,7 @@ export const CreateProductForm = () => {
     };
     const num = customProducts?.length;
     setCustomProducts([...customProducts, { ...newItem, id: `C-${num + 2}` }]);
+    location.reload()
   };
   console.log(errors);
 
