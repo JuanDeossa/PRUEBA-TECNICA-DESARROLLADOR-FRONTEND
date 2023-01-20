@@ -15,7 +15,7 @@ export const ProductCard = (props) => {
     price = "$---",
   } = props;
 
-  const { openAddProductModal, setOpenAddProductModal, data, setData } =
+  const { openAddProductModal, setOpenAddProductModal, setData } =
     useContext(ModalContext);
 
   return (

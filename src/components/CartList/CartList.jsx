@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import { RiDeleteBin6Line, RiEyeLine } from "react-icons/ri";
 import { useContext } from "react";
 import { color } from "@mui/system";
-// import { ModalContext } from "../../context/ModalContext";
+import { ModalContext } from "../../context/ModalContext";
 
 export const CartList = () => {
   const emptyTable = Array(3).fill(null);
@@ -42,6 +42,20 @@ export const CartList = () => {
   };
 
   const labels = ["ID", "Nombre", "Decripción", "Ver más"];
+
+  const { openProductDetailModal, setOpenProductDetailModal, data, setData } =
+    useContext(ModalContext);
+
+  const showRowDetails = (id) => {
+    setOpenProductDetailModal(true);
+    catchDataByID(id);
+  };
+
+  const catchDataByID = (id) => {
+    const product = productsList.find((item) => item.ID === id);
+    setData(product);
+  };
+
   return (
     <div className="cart-list">
       <TableContainer
@@ -75,20 +89,14 @@ export const CartList = () => {
                     <TableCell align="left" sx={cellStyles.value}>
                       {row?.title}
                     </TableCell>
-                    <TableCell
-                      // className={`table-data state ${
-                      //   row?.description ? "yes" : "no"
-                      // }`}
-                      align="left"
-                      sx={cellStyles.value}
-                    >
+                    <TableCell align="left" sx={cellStyles.value}>
                       {row?.description ?? "Not available"}
                     </TableCell>
                     <TableCell
                       align="center"
                       sx={cellStyles.value}
                       id={row.ID}
-                      onClick={() => showRowDetails(row.ID)}
+                      onClick={() => showRowDetails(row?.ID)}
                     >
                       <RiEyeLine className="details-icon" />
                     </TableCell>

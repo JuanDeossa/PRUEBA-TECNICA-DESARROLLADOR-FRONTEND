@@ -81,6 +81,7 @@ export const AddProductModal = () => {
   const confirmOrder = (id) => {
     verifyLocalStorage(id);
     setOpenAddProductModal(false);
+    setData({})
   };
 
   return (
