@@ -36,9 +36,9 @@ export const CreateProductForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box margin="0 auto">
-        <Stack margin="20px auto" width="30%" spacing="15px">
+        <Stack margin="40px auto" width={{xs:"80%"}} sx={{maxWidth:"500px"}} spacing="15px">
           <Typography
-            variant="h4"
+            variant="h5"
             textAlign="center"
             fontFamily="poppins,san-serif"
             color="#042940"
