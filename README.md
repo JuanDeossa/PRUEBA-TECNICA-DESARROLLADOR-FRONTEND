@@ -1,1 +1,4 @@
 # PRUEBA-TECNICA-DESARROLLADOR-FRONTEND.
+
+Aplicacion desplegada:
+https://juandeossa.github.io/PRUEBA-TECNICA-DESARROLLADOR-FRONTEND/
