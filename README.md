@@ -1,43 +1,22 @@
 # PRUEBA-TECNICA-DESARROLLADOR-FRONTEND.
 
-Aplicacion desplegada:
-https://juandeossa.github.io/PRUEBA-TECNICA-DESARROLLADOR-FRONTEND/
+Actividades:
+1.	Agregar los campos necesarios para que la página 2 quede como en el diseño (Actualmente la pagina 1 y la pagina 2 están iguales). Utilice React Hook Form para el formulario y asegúrese de que el campo de “Empresa #” sea de tipo selección única
+https://react-hook-form.com/
 
-Tecnologias Utilizadas y sus comandos de istalacion:
-  -Desarrollo de la aplicacion: vite js (npm install vite@latest)
-  -Despliegue de la aplicacion: gh-pages (npm install gh-pages)
-  -Gestion de rutas (HashRoutes SPA): React-router-dom V6 (npm install react-router-dom)
-  -Peticiones API REST: Axios (npm install axios)
-  -Gestion de formularios: React Hook Form (npm install react-hook-form)
-  -Libreria de estilos y componentes UI: Material UI (npm install @mui/material @emotion/react @emotion/styled)
-  -Iconos para react: React Icons (npm install react-icons --save)
-  
-  Organizacion de carpetas:
-  
-  ![image](https://user-images.githubusercontent.com/110882230/213787805-6bd3e26b-d5b5-4458-aac6-8764431941b3.png)
+2.	Agregar las páginas 3 y 4 con las siguientes características:
+La página 3 debe renderizar la lista de personajes obtenidos de la siguiente API 
+https://rickandmortyapi.com/api/character 
+La data puede ser obtenida como desee, pero es un plus si se utiliza la librería Axios y funciones con async await en lugar de fetch.
+La página 4 solo debe contener una etiqueta h2 con el texto “404 Not Found” en color azul. 
 
-Páginas:
--HomePage:
-  En ella se muestra una grid con los productos traidos de la API (20 en total) y con los productos agregados por el usuarios manualmente en la pagina    llamada crear producto (por defecto no hay productos custom creados). Las acciones que se pueden realizar en esta pagina son agregar cierta cantidad de unidades de cualquier producto al carrito de compras y tambien eliminar los productos custom de la grid principal una vez hayan sido creados.
-  
-  ![image](https://user-images.githubusercontent.com/110882230/213790711-40971e6c-9f1d-47a8-be1f-81e0b36ab60e.png)
+3.	Implementar la navegación entre páginas, esto quiere decir que al dar click sobre alguna opción de página en el Menú de navegación, se debe hacer el respectivo renderizado de la pagina correspondiente en el lado derecho.
 
-  
--Carrito:
-  en Esta pagina se puede ver de manera general y en detalle cada item agregado al carrito de compras, tambien se pueden eliminar todas las cantidades de un item y siempre se muestra el valor total del carrito en la parte inferior.
-  
-  ![image](https://user-images.githubusercontent.com/110882230/213790821-5e6b8b73-6d71-4ede-9cac-7310ce11a455.png)
-  
-  ![image](https://user-images.githubusercontent.com/110882230/213790896-031de091-5ddf-400f-a022-47b03907d640.png)
+![image](https://user-images.githubusercontent.com/110882230/234936740-d618e8f8-5008-404e-a38f-ddaa24de0b92.png)
 
-  
- -Crear producto:
- En esta página se puede crear mediante un formulario de react hook form, productos custom a los cuales se les asigna un ID unico automaticamente y estos productos se agregan automaticamente a la pgina de home para poder ser agregaos o eliminados del carrito.
-    
-  ![image](https://user-images.githubusercontent.com/110882230/213791009-0ca2f79b-c48d-4843-91e7-881237e7f131.png)
-  
-  # Notas
-  -La aplicacion cuenta con persistencia de datos mediante el uso del localStorage del navegador y asi poder conservar los datos del carrito de compras y productos custom.
-  
-  -Realizado por Juan Ricardo Deossa Morales en Medellin, Colombia (18-20 de enero de 2023)
+![image](https://user-images.githubusercontent.com/110882230/234936772-676160aa-d9e3-46a2-9f05-a897b120b58d.png)
+
+![image](https://user-images.githubusercontent.com/110882230/234936787-226178ba-1d65-4a09-8886-15d4b32127ae.png)
+
+
 
