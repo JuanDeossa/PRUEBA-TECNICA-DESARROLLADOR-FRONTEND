@@ -12,7 +12,7 @@ La página 4 solo debe contener una etiqueta h2 con el texto “404 Not Found”
 
 3.	Implementar la navegación entre páginas, esto quiere decir que al dar click sobre alguna opción de página en el Menú de navegación, se debe hacer el respectivo renderizado de la pagina correspondiente en el lado derecho.
 
-![image](https://user-images.githubusercontent.com/110882230/234975374-f7b96099-4fa5-4685-b764-5394167636e5.png)
+![image](https://user-images.githubusercontent.com/110882230/234975663-b051b8ed-ff21-47fc-ac63-ce17b69bf0c9.png)
 
 ![image](https://user-images.githubusercontent.com/110882230/234975273-918d9603-1be9-429f-bbc4-300b2ff4e0d5.png)
 
